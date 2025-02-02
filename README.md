@@ -23,8 +23,6 @@ An important step is to ensure that the ARP timers on the Unifi router are set l
 Select Unifi devices -> UCG Ultra -> Settings
 Under ARP Cache Timeout -> Custom -> 30 seconds
 
-![Unifi settings](https://github.com/8BitVino/homealarm/blob/main/alarmunifisettings.jpg)
-
 <img src="https://github.com/8BitVino/homealarm/blob/main/alarmunifisettings.jpg" alt="Unifi ARP settings" style="width: 50%; height: auto;">
 
 Note:  Very infrequently, the Unifi Router will not detect that an iPhone has "left" the wifi network. This seems to be a quirk for iPhones and not for Android. When this happens, manually going to the device in the Unifi administration and selecting "reconnect" forces the disconnect.
