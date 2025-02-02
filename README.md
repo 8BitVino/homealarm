@@ -13,6 +13,9 @@ How it works?
 
 (Diagram here)
 
+![Flow diagram](https://github.com/8BitVino/homealarm/blob/main/alarmflowdiagram.jpg)
+![Unifi settings](https://github.com/8BitVino/homealarm/blob/main/alarmunifisettings.jpg)
+
 
 Presteps 
 
