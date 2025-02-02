@@ -1,6 +1,7 @@
 # DIY Automated home alarm system
 
-#Overview
+# Overview
+
 Home assistant automations leveraging Unifi presence sensors for Smartphones to automate a home alarm.
 The system required no arming or disarming. 
 
