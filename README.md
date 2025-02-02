@@ -1,5 +1,6 @@
 # DIY Automated home alarm system
 
+#Overview
 Home assistant automations leveraging Unifi presence sensors for Smartphones to automate a home alarm.
 The system required no arming or disarming. 
 
@@ -13,12 +14,12 @@ Prereqs:
 
 <img src="https://github.com/8BitVino/homealarm/blob/main/alarmflowdiagram.jpg" alt="Flow diagram" style="width: 50%; height: auto;">
 
-## Presteps 
-
-1) Unifi router
+# Presteps 
+**1) Configuring ARP timer on Unifi router**
 
 An important step is to ensure that the ARP timers on the Unifi router are set low. This ensures that device presence sensing is low enough to properly detect when a smartphone has left.
 
+Login to the web browser for Unifi Network Management
 Select Unifi devices -> UCG Ultra -> Settings
 Under ARP Cache Timeout -> Custom -> 30 seconds
 
