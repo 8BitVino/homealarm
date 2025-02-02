@@ -30,7 +30,7 @@ Note:  Very infrequently, the Unifi Router will not detect that an iPhone has "l
 
 
 # Automation templates  
-**1)Alarm Engagement Trigger (alarm_enagement.yaml)**
+**Alarm Engagement Trigger (alarm_enagement.yaml)**
 
 This automation runs every 2 minutes to check if all registered smartphones have left the home's WiFi range. When confirmed, it:
 
@@ -40,8 +40,7 @@ This automation runs every 2 minutes to check if all registered smartphones have
 
 The reason there is a 2 minute delay is to ensure that a false activation such a brief disconnect/reconnect of phone (say if someone reboots their phone) doesn't engage the alarm.
 
-
-**2) Alarm Notifications (alarm_notification.yaml) **
+**Alarm Notifications (alarm_notification.yaml)**
 Once enabled, this automation:
 
 - Monitors for binary sensor triggers (motion, door, window sensors)
@@ -51,7 +50,7 @@ Once enabled, this automation:
 
 The reason for a 2 minute delay in sending the alarm is that it's possible for a home user to get to an entry point to house and trigger an entry sensor BEFORE there is time for their smartphone to connect.
 
-**3) Alarm Disengagement Trigger (alarm_disengagement.yaml)**  
+**Alarm Disengagement Trigger (alarm_disengagement.yaml)**  
 Running on a 2-minute cycle, this automation:
 
 - Detects when any registered home smartphone returns home
