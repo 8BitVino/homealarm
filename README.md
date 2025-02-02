@@ -3,7 +3,11 @@
 # Overview
 
 Home assistant automations leveraging Unifi presence sensors for Smartphones to automate a home alarm.
+
+
 The system required no arming or disarming. 
+
+
 It regularly checks to see if the home users Smartphones are connected to WIFI.
 
 Prereqs:
