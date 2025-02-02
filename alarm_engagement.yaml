@@ -1,0 +1,113 @@
+alias: ALARM engagement trigger
+description: ""
+triggers:
+  - trigger: time_pattern
+    minutes: /2
+  - trigger: state
+    entity_id:
+      - device_tracker.iphone
+    to: not_home
+  - trigger: state
+    entity_id:
+      - device_tracker.android
+    to: not_home
+conditions:
+  - condition: state
+    entity_id: automation.test_email
+    state: "off"
+  - condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.iphone
+        state: not_home
+      - condition: state
+        entity_id: device_tracker.android
+        state: not_home
+actions:
+  - target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    data: {}
+    action: switch.turn_on
+  - target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    data: {}
+    action: switch.turn_on
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    action: switch.turn_off
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    data: {}
+    action: switch.turn_on
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    action: switch.turn_off
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    data: {}
+    action: switch.turn_on
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - switch.hallway_light
+        - switch.garage_light
+    action: switch.turn_off
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - metadata: {}
+    data: {}
+    target:
+      entity_id: automation.test_email
+    action: automation.turn_on
+
+  - metadata: {}
+    data:
+      message: Alarm engaged
+      title: Alarm engaged
+    action: notify.email
+mode: single

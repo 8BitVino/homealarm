@@ -1,0 +1,40 @@
+alias: ALARM notifications out
+description: When enabled sends alarm notifications to email and SMS
+triggers:
+  - entity_id:
+      - binary_sensor.sensorA
+    from: "off"
+    to: "on"
+    trigger: state
+  - entity_id:
+      - binary_sensor.sensorB
+    from: "off"
+    to: "on"
+    trigger: state
+  - entity_id:
+      - binary_sensor.sensorC
+    from: "off"
+    to: "on"
+    trigger: state
+
+conditions: []
+actions:
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - condition: state
+    entity_id: device_tracker.iphone
+    state: not_home
+  - condition: state
+    entity_id: device_tracker.android
+    state: not_home
+  - data:
+      message: Alarm triggered
+      title: "Alarm: {{trigger.to_state.name}} was {{trigger.to_state.state}}"
+    action: notify.email
+  - action: notify.sms
+    data:
+      message: "Alarm: {{trigger.to_state.name}} was {{trigger.to_state.state}}"
+mode: single

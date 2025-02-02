@@ -1,0 +1,86 @@
+alias: ALARM disengage trigger
+description: ""
+triggers:
+  - trigger: time_pattern
+    minutes: /2
+  - trigger: state
+    entity_id:
+      - device_tracker.iphone
+    from: not_home
+    to: home
+  - trigger: state
+    entity_id:
+      - device_tracker.android
+    from: not_home
+    to: home
+conditions:
+  - condition: state
+    entity_id: automation.test_email
+    state: "on"
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: device_tracker.iphone
+        state: home
+      - condition: state
+        entity_id: device_tracker.android
+        state: home
+actions:
+  - metadata: {}
+    data:
+      stop_actions: true
+    target:
+      entity_id: automation.test_email
+    action: automation.turn_off
+  - metadata: {}
+    data:
+      message: Alarm disengaged
+      title: Alarm disengaged
+    action: notify.email
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - switch.garage_light
+        - switch.hallway_light
+    action: switch.turn_on
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - target:
+      entity_id:
+        - switch.garage_light
+        - switch.hallway_light
+    data: {}
+    action: switch.turn_off
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - switch.garage_light
+        - switch.hallway_light
+    action: switch.turn_on
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - target:
+      entity_id:
+        - switch.garage_light
+        - switch.hallway_light
+    data: {}
+    action: switch.turn_off
+mode: single
