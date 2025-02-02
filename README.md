@@ -8,7 +8,7 @@ The system required no arming or disarming.
 Prereqs:
 * Home assistant 
 	* Multiple binary enabled sensors (door, windows, PIR's)
-	* Integration - SMTP   
+	* Integration - SMTP (allows sending to email and an SMS provider via email)
 	* Integration - Unifi UCG Ultra or similar Unifi router
 
 ## How it works?
