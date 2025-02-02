@@ -1,6 +1,7 @@
 # DIY Automated home alarm system
 
 Home assistant automations leveraging Unifi presence sensors for Smartphones to automate a home alarm.
+The system required no arming or disarming. 
 
 Prereqs:
 * Home assistant 
@@ -8,13 +9,11 @@ Prereqs:
 	* Integration - SMTP   
 	* Integration - Unifi UCG Ultra or similar Unifi router
 
-
-How it works?
-
+## How it works?
 
 <img src="https://github.com/8BitVino/homealarm/blob/main/alarmflowdiagram.jpg" alt="Flow diagram" style="width: 50%; height: auto;">
 
-Presteps 
+## Presteps 
 
 1) Unifi router
 
@@ -28,17 +27,8 @@ Under ARP Cache Timeout -> Custom -> 30 seconds
 Note:  Very infrequently, the Unifi Router will not detect that an iPhone has "left" the wifi network. This seems to be a quirk for iPhones and not for Android. When this happens, manually going to the device in the Unifi administration and selecting "reconnect" forces the disconnect.
 
 
-2) Home assistant integrations
-
-The automation is based on the following integrations being configured:
-	1) SMTP - Provides outdoing emails to home users and integration to my SMS message provider
-	2) Presence sensors - eg: various Shelly, MQTT, Tasmota, ESPHOME which are your sensors to be monitored.
-	3) Unifi Network - Provides the smartphone as an entity that is tracked for presense in Home assistant.
-
-
-
-**3) Automation templates**  
-Alarm Engagement Trigger (alarm_enagement.yaml)
+# Automation templates  
+**1)Alarm Engagement Trigger (alarm_enagement.yaml)**
 
 This automation runs every 2 minutes to check if all registered smartphones have left the home's WiFi range. When confirmed, it:
 
@@ -49,8 +39,7 @@ This automation runs every 2 minutes to check if all registered smartphones have
 The reason there is a 2 minute delay is to ensure that a false activation such a brief disconnect/reconnect of phone (say if someone reboots their phone) doesn't engage the alarm.
 
 
-**2) Alarm Notifications**  
-(alarm_notification.yaml)
+**2) Alarm Notifications (alarm_notification.yaml) **
 Once enabled, this automation:
 
 - Monitors for binary sensor triggers (motion, door, window sensors)
@@ -60,8 +49,7 @@ Once enabled, this automation:
 
 The reason for a 2 minute delay in sending the alarm is that it's possible for a home user to get to an entry point to house and trigger an entry sensor BEFORE there is time for their smartphone to connect.
 
-**2) Alarm Disengagement Trigger**  
-(alarm_disengagement.yaml)
+**3) Alarm Disengagement Trigger (alarm_disengagement.yaml)**  
 Running on a 2-minute cycle, this automation:
 
 - Detects when any registered home smartphone returns home
